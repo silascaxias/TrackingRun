@@ -8,4 +8,29 @@
         <item>Calories Burned</item>
     </string-array>
     <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
+    <string name="your_runs_title">Corridas</string>
+    <string name="statistics_title">Estatísticas</string>
+    <string name="settings_title">Configurações</string>
+    <string name="welcome_text">Bem vindo! \nPor favor, insira seu nome e seu peso.</string>
+    <string name="name_placeholder">Nome</string>
+    <string name="weight_placeholder">Peso (Kg)</string>
+    <string name="continue_text">Continuar</string>
+    <string name="sort_by_text">Ondernar por:</string>
+    <string name="new_run_fab_description">Ir para tela de nova corrida</string>
+    <string name="apply_text">Aplicar</string>
+    <string name="total_distance_text">Distância Total</string>
+    <string name="zero_km_text">0km</string>
+    <string name="total_time_text">Tempo Total</string>
+    <string name="empty_time">00:00:00</string>
+    <string name="total_calories_burned_text">Total de Calorias Queimadas</string>
+    <string name="zero_kcal_text">0kcal</string>
+    <string name="average_speed_text">Velocidade Média</string>
+    <string name="zero_km_h_text">0km/h</string>
+    <string name="start_text">Começar</string>
+    <string name="finish_run_text">Finalizar Corrida</string>
+    <string name="cancel_run_text">Cancelar Corrida</string>
+    <string name="cancel_run_text_confirm">A corrida atual será cancelada. Você tem certeza?</string>
+    <string name="yes_text">Sim</string>
+    <string name="no_text">Não</string>
+    <string name="stop_text">Parar</string>
 </resources>
