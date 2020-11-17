@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_login"
+        android:contentDescription="Imagem de corredor" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#958BC34A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/separatorView1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/grayColor"
+                app:layout_constraintEnd_toEndOf="@+id/inputLayoutName"
+                app:layout_constraintStart_toStartOf="@+id/inputLayoutName"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutName" />
+
+            <View
+                android:id="@+id/separatorView2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/grayColor"
+                app:layout_constraintEnd_toEndOf="@+id/textInputWeight"
+                app:layout_constraintStart_toStartOf="@+id/textInputWeight"
+                app:layout_constraintTop_toBottomOf="@+id/textInputWeight" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="33dp"
+                android:textColorHint="@color/grayColor"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:hintTextColor="@color/grayColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderTextColor="@color/grayColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/name_placeholder"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="0dp"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/grayColor"
+                    android:textColorHint="@color/grayColor"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginBottom="32dp"
+                android:textColorHint="@color/grayColor"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:hintTextColor="@color/grayColor"
+                app:layout_constraintBottom_toTopOf="@+id/buttonContinue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutName"
+                app:placeholderTextColor="#BDBDBD">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/weight_placeholder"
+                    android:inputType="number"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="0dp"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/grayColor"
+                    android:textColorHint="@color/grayColor"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/buttonContinue"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginBottom="28dp"
+                android:background="#1E88E5"
+                android:gravity="center"
+                android:text="@string/continue_text"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
