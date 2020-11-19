@@ -20,7 +20,6 @@ import dagger.hilt.android.scopes.ServiceScoped
 @InstallIn(ServiceComponent::class)
 object ServiceModule {
 
-    @SuppressLint("VisibleForTests")
     @ServiceScoped // Equal to Singleton annotation
     @Provides
     fun provideFusedLocationProviderClient(
