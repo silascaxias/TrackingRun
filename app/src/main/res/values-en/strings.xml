@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tracking Run</string>
+    <string-array name="filter_options">
+        <item>Date</item>
+        <item>Running Time</item>
+        <item>Distance</item>
+        <item>Average Speed</item>
+        <item>Calories Burned</item>
+    </string-array>
+    <string name="your_runs_title">Runs</string>
+    <string name="statistics_title">Statistics</string>
+    <string name="settings_title">Settings</string>
+    <string name="welcome_text">Welcome! \ nPlease enter your name and weight.</string>
+    <string name="name_placeholder">Name</string>
+    <string name="weight_placeholder">Weight (Kg)</string>
+    <string name="continue_text">Continue</string>
+    <string name="sort_by_text">Search by:</string>
+    <string name="new_run_fab_description">Go to new race Screen.</string>
+    <string name="apply_text">Apply</string>
+    <string name="total_distance_text">Total Distance</string>
+    <string name="zero_km_text">0km</string>
+    <string name="total_time_text">Total time</string>
+    <string name="empty_time">00:00:00</string>
+    <string name="total_calories_burned_text">Total Burned Calories</string>
+    <string name="zero_kcal_text">0kcal</string>
+    <string name="average_speed_text">Average Speed</string>
+    <string name="zero_km_h_text">0km/h</string>
+    <string name="start_text">Start</string>
+    <string name="finish_run_text">Finish Race</string>
+    <string name="cancel_run_text">Cancel Race</string>
+    <string name="cancel_run_text_confirm">The current race will be canceled. Are you sure?</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="stop_text">Stop</string>
+    <string name="run_success_save_text">Run saved successfully.</string>
+    <string name="lets_go_text">"Let's go, %s!"</string>
+    <string name="name_require_text">Enter a name!</string>
+    <string name="weight_require_text">Enter a weight!</string>
+    <string name="saved_changes_text">Saved changes!</string>
+    <string name="km_text">km</string>
+    <string name="kcal_text">kcal</string>
+    <string name="km_h_text">km/h</string>
+    <string name="date_text">DATE</string>
+    <string name="duration_text">DURATION</string>
+    <string name="avg_speed_uppercase_text">AVG SPEED</string>
+    <string name="distance_uppercase_text">DISTANCE</string>
+    <string name="calories_burned_uppercase_text">CALORIES BURNED</string>
+    <string name="empty_time_milliseconds">00:00:00:00</string>
+    <string name="avg_speed_over_time_text">Avg Speed Over Time</string>
+    <string name="no_chart_data_text">No chart data available.</string>
+    <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
+</resources>
