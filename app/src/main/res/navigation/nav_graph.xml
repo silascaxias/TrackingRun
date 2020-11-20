@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/setupFragment">
 
     <action android:id="@+id/action_global_tracking_fragment"
@@ -14,6 +16,9 @@
         <action
             android:id="@+id/action_runFragment_to_trackingFragment"
             app:destination="@id/trackingFragment" />
+        <action
+            android:id="@+id/action_runFragment_to_runDetailsFragment"
+            app:destination="@id/runDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/setupFragment"
@@ -39,4 +44,16 @@
             android:id="@+id/action_trackingFragment_to_runFragment"
             app:destination="@id/runFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/runDetailsFragment"
+        android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RunDetailsFragment"
+        android:label="fragment_run_details_list_dialog"
+        tools:layout="@layout/fragment_run_details" >
+        <action
+            android:id="@+id/action_runDetailsFragment_to_runFragment"
+            app:destination="@id/runFragment" />
+        <argument
+            android:name="currentRun"
+            app:argType="com.scaxias.enterprise.trackingrun.db.run.entities.Run" />
+    </dialog>
 </navigation>

@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.scaxias.enterprise.trackingrun.R
+import com.scaxias.enterprise.trackingrun.db.run.entities.Run
+import com.scaxias.enterprise.trackingrun.extensions.gone
+import com.scaxias.enterprise.trackingrun.extensions.visible
 import com.scaxias.enterprise.trackingrun.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
 import com.scaxias.enterprise.trackingrun.other.RunsFilterType
 import com.scaxias.enterprise.trackingrun.other.TrackingUtils
@@ -21,7 +25,7 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
 @AndroidEntryPoint
-class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCallbacks {
+class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCallbacks, RunAdapter.RunCellClickListener {
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -42,7 +46,10 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
             }
         }
 
-        viewModel.runs.observe(viewLifecycleOwner, { runAdapter.submitList(it) })
+        viewModel.runs.observe(viewLifecycleOwner, { runs ->
+            textViewEmptyRuns.apply { if(runs.isEmpty()) visible() else gone() }
+            runAdapter.submitList(runs)
+        })
 
         newRunButton.setOnClickListener {
             findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
@@ -50,7 +57,7 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
     }
 
     private fun setupRecyclerView() = recyclerViewRuns.apply {
-        runAdapter = RunAdapter()
+        runAdapter = RunAdapter(this@RunFragment)
         adapter = runAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }
@@ -62,7 +69,7 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             EasyPermissions.requestPermissions(
                 this,
-                "You need to accept location permissions to use this app.",
+                getString(R.string.accept_permissions_text),
                 REQUEST_CODE_LOCATION_PERMISSION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -70,13 +77,18 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
         } else {
             EasyPermissions.requestPermissions(
                 this,
-                "You need to accept location permissions to use this app.",
+                getString(R.string.accept_permissions_text),
                 REQUEST_CODE_LOCATION_PERMISSION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION
             )
         }
+    }
+
+    override fun onRunCellClickListener(currentRun: Run) {
+        val action = RunFragmentDirections.actionRunFragmentToRunDetailsFragment(currentRun)
+        findNavController().navigate(action)
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) = Unit

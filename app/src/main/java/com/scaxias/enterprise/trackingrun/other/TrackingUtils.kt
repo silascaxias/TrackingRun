@@ -1,27 +1,30 @@
 package com.scaxias.enterprise.trackingrun.other
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Build
+import android.view.View
 import com.scaxias.enterprise.trackingrun.services.Polyline
-import com.scaxias.enterprise.trackingrun.services.Polylines
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.concurrent.TimeUnit
+
 
 object TrackingUtils {
     fun hasLocationPermissions(context: Context) =
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             EasyPermissions.hasPermissions(
-                context,
-                android.Manifest.permission.ACCESS_FINE_LOCATION,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    context,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION
             )
         } else {
             EasyPermissions.hasPermissions(
-                context,
-                android.Manifest.permission.ACCESS_FINE_LOCATION,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                    context,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                    android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
             )
         }
 
@@ -35,11 +38,11 @@ object TrackingUtils {
             val result = FloatArray(1)
 
             Location.distanceBetween(
-                pos1.latitude,
-                pos1.longitude,
-                pos2.latitude,
-                pos2.longitude,
-                result
+                    pos1.latitude,
+                    pos1.longitude,
+                    pos2.latitude,
+                    pos2.longitude,
+                    result
             )
             distance += result[0]
         }
@@ -68,6 +71,12 @@ object TrackingUtils {
                 "${if(minutes < 10) "0" else ""}$minutes:" +
                 "${if(seconds < 10) "0" else ""}$seconds" +
                 if (!includeMillis) "" else "${if(milliseconds < 10) ":0" else ":"}$milliseconds"
+    }
 
+    fun loadBitmapFromView(v: View): Bitmap? {
+        val b = Bitmap.createBitmap(v.width, v.height, Bitmap.Config.ARGB_8888)
+        val c = Canvas(b)
+        v.draw(c)
+        return b
     }
 }

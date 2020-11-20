@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_run.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RunAdapter: RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
+class RunAdapter(var runCellClickListener: RunCellClickListener): RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     inner class RunViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -60,10 +60,16 @@ class RunAdapter: RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
             val caloriesBurned = "${run.caloriesBurned}${resources.getString(R.string.zero_kcal_text)}"
             textViewCalories.text = caloriesBurned
+
+            setOnClickListener { runCellClickListener.onRunCellClickListener(run) }
         }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    interface RunCellClickListener {
+        fun onRunCellClickListener(currentRun: Run)
     }
 }

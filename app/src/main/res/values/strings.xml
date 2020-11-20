@@ -50,4 +50,10 @@
     <string name="avg_speed_over_time_text">Velocidade média ao longo do tempo.</string>
     <string name="no_chart_data_text">Nenhum dado gráfico disponível.</string>
     <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
+    <string name="runs_empty_text">Seus trajetos aparecerão aqui!</string>
+    <string name="accept_permissions_text">You need to accept location permissions to use this app.</string>
+    <string name="map_route_description_text">Mapa da rota realizada.</string>
+    <string name="share_button_description">Share button</string>
+    <string name="share_text">Compartilhar</string>
+    <string name="share_run_text">Compartilhar corrida!</string>
 </resources>

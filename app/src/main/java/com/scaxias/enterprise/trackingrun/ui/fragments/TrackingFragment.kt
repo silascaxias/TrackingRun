@@ -31,10 +31,10 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.math.round
 
-const val CANCEL_TRACKING_DIALOG_TAG = "CANCEL_TRACKING_DIALOG_TAG"
-
 @AndroidEntryPoint
 class TrackingFragment: Fragment(R.layout.fragment_tracking) {
+
+    private val cancelTrackingDialogTag = "cancelTrackingDialogTag"
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -61,7 +61,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
 
         if(savedInstanceState != null) {
             val cancelTrackingDialog = parentFragmentManager.findFragmentByTag(
-                CANCEL_TRACKING_DIALOG_TAG) as CancelTrackingDialogFragment?
+                cancelTrackingDialogTag) as CancelTrackingDialogFragment?
             cancelTrackingDialog?.setPositiveListener { stopRun() }
         }
         buttonRun.setOnClickListener { toggleRun() }
@@ -71,7 +71,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
         mapView.getMapAsync {
             map = it
-            addAllPolylines()
+            addAllRoutes()
         }
 
         subscribeToObservers()
@@ -81,7 +81,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         TrackingService.isTracking.observe(viewLifecycleOwner, { updateTracking(it) })
         TrackingService.pathPoints.observe(viewLifecycleOwner, {
             pathPoints = it
-            addLatestPolyline()
+            addLatestRoute()
         })
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, {
             curTimeInMillis = it
@@ -102,7 +102,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     private fun showCancelDialog() {
         CancelTrackingDialogFragment().apply {
             setPositiveListener { stopRun() }
-        }.show(parentFragmentManager, CANCEL_TRACKING_DIALOG_TAG)
+        }.show(parentFragmentManager, cancelTrackingDialogTag)
     }
 
     private fun stopRun() {
@@ -172,7 +172,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
     }
 
-    private fun addAllPolylines() {
+    private fun addAllRoutes() {
         for(polyline in pathPoints) {
             val polylineOptions = PolylineOptions()
                     .color(POLYLINE_COLOR)
@@ -182,7 +182,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
     }
 
-    private fun addLatestPolyline() {
+    private fun addLatestRoute() {
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 1) {
             val preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
             val lastLatLng = pathPoints.last().last()
