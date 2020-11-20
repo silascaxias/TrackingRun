@@ -1,13 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tracking Run</string>
     <string-array name="filter_options">
-        <item>Date</item>
-        <item>Running Time</item>
-        <item>Distance</item>
-        <item>Average Speed</item>
-        <item>Calories Burned</item>
+        <item>Data</item>
+        <item>Tempo Percorrido</item>
+        <item>Distância</item>
+        <item>Velocidade média</item>
+        <item>Calorias Queimadas</item>
     </string-array>
-    <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
     <string name="your_runs_title">Corridas</string>
     <string name="statistics_title">Estatísticas</string>
     <string name="settings_title">Configurações</string>
@@ -33,4 +33,21 @@
     <string name="yes_text">Sim</string>
     <string name="no_text">Não</string>
     <string name="stop_text">Parar</string>
+    <string name="run_success_save_text">Corrida salva com sucesso.</string>
+    <string name="lets_go_text">"Vamos lá, %s!"</string>
+    <string name="name_require_text">Informe um nome!</string>
+    <string name="weight_require_text">Informe um peso!</string>
+    <string name="saved_changes_text">Dados salvos!</string>
+    <string name="km_text">km</string>
+    <string name="kcal_text">kcal</string>
+    <string name="km_h_text">km/h</string>
+    <string name="date_text">DATA</string>
+    <string name="duration_text">DURAÇÃO</string>
+    <string name="avg_speed_uppercase_text">VELOCIDADE MÉDIA</string>
+    <string name="distance_uppercase_text">DISTÂNCIA</string>
+    <string name="calories_burned_uppercase_text">CALORIAS QUEIMADAS</string>
+    <string name="empty_time_milliseconds">00:00:00:00</string>
+    <string name="avg_speed_over_time_text">Velocidade média ao longo do tempo.</string>
+    <string name="no_chart_data_text">Nenhum dado gráfico disponível.</string>
+    <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
 </resources>

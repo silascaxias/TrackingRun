@@ -4,70 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/ivRunImage"
+        android:id="@+id/imageViewRun"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDate"
+        android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="DATE"
-        app:layout_constraintEnd_toStartOf="@+id/tvTime"
+        android:textColor="@color/blueColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTime"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivRunImage" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRun" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvTime"
+        android:id="@+id/textViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TIME"
-        app:layout_constraintEnd_toStartOf="@+id/tvDistance"
+        android:textColor="@color/blueColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDistance"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintTop_toBottomOf="@+id/ivRunImage" />
+        app:layout_constraintStart_toEndOf="@+id/textViewDate"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRun" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDistance"
+        android:id="@+id/textViewDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="DISTANCE"
-        app:layout_constraintEnd_toStartOf="@+id/tvAvgSpeed"
+        android:textColor="@color/blueColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAvgSpeed"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvTime"
-        app:layout_constraintTop_toBottomOf="@+id/ivRunImage" />
+        app:layout_constraintStart_toEndOf="@+id/textViewTime"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRun" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvAvgSpeed"
+        android:id="@+id/textViewAvgSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="AVGSPEED"
-        app:layout_constraintEnd_toStartOf="@+id/tvCalories"
+        android:textColor="@color/blueColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCalories"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvDistance"
-        app:layout_constraintTop_toBottomOf="@+id/ivRunImage" />
+        app:layout_constraintStart_toEndOf="@+id/textViewDistance"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRun" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvCalories"
+        android:id="@+id/textViewCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="CALORIES"
+        android:textColor="@color/blueColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvAvgSpeed"
-        app:layout_constraintTop_toBottomOf="@+id/ivRunImage" />
+        app:layout_constraintStart_toEndOf="@+id/textViewAvgSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRun" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

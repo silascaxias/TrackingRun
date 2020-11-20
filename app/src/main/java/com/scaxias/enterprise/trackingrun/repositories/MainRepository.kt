@@ -19,7 +19,7 @@ class MainRepository @Inject constructor(
 
     fun fetchRunsByAvgSpeed() = runDAO.fetchByAvgSpeed()
 
-    fun fetchAllRunsByCaloriesBurned() = runDAO.fetchByCaloriesBurned()
+    fun fetchRunsByCaloriesBurned() = runDAO.fetchByCaloriesBurned()
 
     fun fetchTotalAvgSpeed() = runDAO.fetchTotalAvgSpeed()
 

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:padding="16dp">
 
     <com.google.android.material.textview.MaterialTextView
@@ -12,57 +10,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total_distance_text"
-        android:textColor="@color/blueColor"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAverageSpeedInfo"
         app:layout_constraintEnd_toEndOf="@+id/textViewTotalDistance"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textViewTotalDistance"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalDistance" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewTotalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/zero_km_text"
-        android:textColor="@color/blueColor"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalDistanceInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAverageSpeed"
+        app:layout_constraintStart_toStartOf="@+id/textViewAverageSpeed"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewTotalTimeInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total_time_text"
-        android:textColor="@color/blueColor"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalCaloriesInfo"
         app:layout_constraintEnd_toEndOf="@+id/textViewTotalTime"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textViewTotalTime"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalTime" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewTotalTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/empty_time"
-        android:textColor="@color/blueColor"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalTimeInfo"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewTotalCaloriesInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/total_calories_burned_text"
-        android:textColor="@color/blueColor"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="@+id/textViewTotalCalories"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textViewTotalCalories"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,42 +52,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/zero_kcal_text"
-        android:textColor="@color/blueColor"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalCaloriesInfo"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAverageSpeed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewTotalCaloriesInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_calories_burned_text"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTotalCalories"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalCalories"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalCalories" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewAverageSpeedInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="@string/average_speed_text"
-        android:textColor="@color/blueColor"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="@+id/textViewAverageSpeed"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textViewAverageSpeed"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAverageSpeed" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewAverageSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/zero_km_h_text"
-        android:textColor="@color/blueColor"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAverageSpeedInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lineChart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewTotalCalories"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7017784" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -117,9 +106,11 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAverageSpeedInfo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

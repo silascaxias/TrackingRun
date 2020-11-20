@@ -90,7 +90,7 @@
                     android:paddingEnd="0dp"
                     android:singleLine="true"
                     android:textAlignment="gravity"
-                    android:textColor="@color/grayColor"
+                    android:textColor="@color/blueColor"
                     android:textColorHint="@color/grayColor"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -124,7 +124,7 @@
                     android:paddingEnd="0dp"
                     android:singleLine="true"
                     android:textAlignment="gravity"
-                    android:textColor="@color/grayColor"
+                    android:textColor="@color/blueColor"
                     android:textColorHint="@color/grayColor"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
