@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.snackbar.Snackbar
@@ -39,6 +40,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     private val viewModel: MainViewModel by viewModels()
 
     private var isTracking = false
+    private var lastLatLngVisible: LatLng? = null
     private var pathPoints = mutableListOf<Polyline>()
 
     private var map: GoogleMap? = null
@@ -58,6 +60,8 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mapView.onCreate(savedInstanceState)
+
+        lastLatLngVisible = null
 
         if(savedInstanceState != null) {
             val cancelTrackingDialog = parentFragmentManager.findFragmentByTag(
@@ -184,7 +188,9 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
 
     private fun addLatestRoute() {
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 1) {
-            val preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
+            val preLastLatLng = if(lastLatLngVisible != null) lastLatLngVisible
+                                else pathPoints.last()[pathPoints.last().size - 2]
+
             val lastLatLng = pathPoints.last().last()
             val polylineOptions = PolylineOptions()
                     .color(POLYLINE_COLOR)
@@ -193,6 +199,8 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
                     .add(lastLatLng)
 
             map?.addPolyline(polylineOptions)
+
+            if(lastLatLngVisible != null) lastLatLngVisible = null
         }
         moveCameraToUser()
     }
@@ -232,6 +240,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onStop() {
         super.onStop()
         mapView?.onStop()
+        lastLatLngVisible = pathPoints.last().last()
     }
 
     override fun onPause() {
@@ -247,6 +256,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onDestroy() {
         super.onDestroy()
         mapView?.onDestroy()
+        lastLatLngVisible = null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
