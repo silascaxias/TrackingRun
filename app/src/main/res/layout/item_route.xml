@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCFFFFFF"
+        android:backgroundTintMode="add"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imageViewRun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/map_route_description_text"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCalories" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueColor"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTime"
+            app:layout_constraintEnd_toStartOf="@+id/textViewTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewTime"
+            tools:text="DATE" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueColor"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDistance"
+            app:layout_constraintEnd_toStartOf="@+id/textViewDistance"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewDate"
+            app:layout_constraintTop_toTopOf="@+id/textViewDistance"
+            tools:text="TIME" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueColor"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAvgSpeed"
+            app:layout_constraintEnd_toStartOf="@+id/textViewAvgSpeed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewTime"
+            app:layout_constraintTop_toTopOf="@+id/textViewAvgSpeed"
+            tools:text="DISTANCE" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewAvgSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueColor"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCalories"
+            app:layout_constraintEnd_toStartOf="@+id/textViewCalories"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewDistance"
+            app:layout_constraintTop_toTopOf="@+id/textViewCalories"
+            tools:text="AVGSPEED" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blueColor"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewAvgSpeed"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CALORIES" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

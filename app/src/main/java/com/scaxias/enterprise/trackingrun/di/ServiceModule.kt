@@ -1,6 +1,5 @@
 package com.scaxias.enterprise.trackingrun.di
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -8,7 +7,7 @@ import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.other.Constants
-import com.scaxias.enterprise.trackingrun.ui.MainActivity
+import com.scaxias.enterprise.trackingrun.ui.AppActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +32,7 @@ object ServiceModule {
     ): PendingIntent =  PendingIntent.getActivity(
         app,
         0,
-        Intent(app, MainActivity::class.java).also {
+        Intent(app, AppActivity::class.java).also {
             it.action = Constants.ACTION_SHOW_TRACKING_FRAGMENT
         },
         PendingIntent.FLAG_UPDATE_CURRENT

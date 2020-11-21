@@ -1,6 +1,7 @@
 package com.scaxias.enterprise.trackingrun.ui.fragments
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.snackbar.Snackbar
@@ -21,24 +23,27 @@ import com.scaxias.enterprise.trackingrun.other.Constants.ACTION_STOP_SERVICE
 import com.scaxias.enterprise.trackingrun.other.Constants.MAP_ZOOM
 import com.scaxias.enterprise.trackingrun.other.Constants.POLYLINE_COLOR
 import com.scaxias.enterprise.trackingrun.other.Constants.POLYLINE_WIDTH
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
+import com.scaxias.enterprise.trackingrun.other.utils.ConfirmDialogFragment
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.services.Polyline
 import com.scaxias.enterprise.trackingrun.services.TrackingService
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_tracking.*
+import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.round
 
-const val CANCEL_TRACKING_DIALOG_TAG = "CANCEL_TRACKING_DIALOG_TAG"
-
 @AndroidEntryPoint
 class TrackingFragment: Fragment(R.layout.fragment_tracking) {
+
+    private val cancelTrackingDialogTag = "cancelTrackingDialogTag"
 
     private val viewModel: MainViewModel by viewModels()
 
     private var isTracking = false
+    private var lastLatLngVisible: LatLng? = null
     private var pathPoints = mutableListOf<Polyline>()
 
     private var map: GoogleMap? = null
@@ -58,10 +63,13 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mapView.onCreate(savedInstanceState)
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+
+        lastLatLngVisible = null
 
         if(savedInstanceState != null) {
             val cancelTrackingDialog = parentFragmentManager.findFragmentByTag(
-                CANCEL_TRACKING_DIALOG_TAG) as CancelTrackingDialogFragment?
+                cancelTrackingDialogTag) as ConfirmDialogFragment?
             cancelTrackingDialog?.setPositiveListener { stopRun() }
         }
         buttonRun.setOnClickListener { toggleRun() }
@@ -71,9 +79,8 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
         mapView.getMapAsync {
             map = it
-            addAllPolylines()
+            addAllRoutes()
         }
-
         subscribeToObservers()
     }
 
@@ -81,7 +88,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         TrackingService.isTracking.observe(viewLifecycleOwner, { updateTracking(it) })
         TrackingService.pathPoints.observe(viewLifecycleOwner, {
             pathPoints = it
-            addLatestPolyline()
+            addLatestRoute()
         })
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, {
             curTimeInMillis = it
@@ -94,16 +101,16 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         if (isTracking) {
             menu?.getItem(0)?.isVisible = true
             sendCommandToService(ACTION_PAUSE_SERVICE)
-        } else {
-            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
-        }
+        } else sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
     }
 
-    private fun showCancelDialog() {
-        CancelTrackingDialogFragment().apply {
-            setPositiveListener { stopRun() }
-        }.show(parentFragmentManager, CANCEL_TRACKING_DIALOG_TAG)
-    }
+    private fun showCancelDialog() = ConfirmDialogFragment(
+                getString(R.string.cancel_run_text),
+                getString(R.string.cancel_run_text_confirm),
+                getString(R.string.yes_text),
+                { stopRun() },
+                getString(R.string.no_text)
+    ) .show(parentFragmentManager, cancelTrackingDialogTag)
 
     private fun stopRun() {
         textViewTimer.text = getString(R.string.empty_time_milliseconds)
@@ -172,7 +179,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
     }
 
-    private fun addAllPolylines() {
+    private fun addAllRoutes() {
         for(polyline in pathPoints) {
             val polylineOptions = PolylineOptions()
                     .color(POLYLINE_COLOR)
@@ -182,9 +189,11 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         }
     }
 
-    private fun addLatestPolyline() {
+    private fun addLatestRoute() {
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 1) {
-            val preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
+            val preLastLatLng = if(lastLatLngVisible != null) lastLatLngVisible
+                                else pathPoints.last()[pathPoints.last().size - 2]
+
             val lastLatLng = pathPoints.last().last()
             val polylineOptions = PolylineOptions()
                     .color(POLYLINE_COLOR)
@@ -193,6 +202,8 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
                     .add(lastLatLng)
 
             map?.addPolyline(polylineOptions)
+
+            if(lastLatLngVisible != null) lastLatLngVisible = null
         }
         moveCameraToUser()
     }
@@ -232,6 +243,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onStop() {
         super.onStop()
         mapView?.onStop()
+        lastLatLngVisible = try {  pathPoints.last().last() } catch (_: Exception) { null }
     }
 
     override fun onPause() {
@@ -247,6 +259,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onDestroy() {
         super.onDestroy()
         mapView?.onDestroy()
+        lastLatLngVisible = null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -31,4 +31,7 @@ object Constants {
     const val NOTIFICATION_ID = 1
     const val NOTIFICATION_ACTION_PAUSE = "Pause"
     const val NOTIFICATION_ACTION_RESUME = "Resume"
+
+    const val TRACKING_SHARE_FILE_NAME = "tracking_run_shared.png"
+    const val TRACKING_SHARE_FILE_FOLDER = "images"
 }

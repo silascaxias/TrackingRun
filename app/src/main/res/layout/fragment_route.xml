@@ -13,7 +13,6 @@
         android:layout_margin="8dp"
         android:background="@color/blueColor"
         android:entries="@array/filter_options"
-        android:forceDarkAllowed="true"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewRuns"
@@ -26,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/sort_by_text"
-        android:textColor="@color/grayColor"
+        android:textColor="@color/blueColor"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerFilter"
         app:layout_constraintEnd_toStartOf="@+id/spinnerFilter"
@@ -56,5 +55,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@android:color/white"
         app:tint="@color/blueColor" />
+
+    <TextView
+        android:id="@+id/textViewEmptyRuns"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:text="@string/runs_empty_text"
+        android:textAlignment="gravity"
+        android:textColor="@color/blueColor"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewRuns" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

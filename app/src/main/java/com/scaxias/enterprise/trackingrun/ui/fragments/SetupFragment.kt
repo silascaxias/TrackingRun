@@ -1,6 +1,7 @@
 package com.scaxias.enterprise.trackingrun.ui.fragments
 
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,7 +14,7 @@ import com.scaxias.enterprise.trackingrun.other.Constants.KEY_FIRST_TIME_TOGGLE
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_NAME
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_WEIGHT
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_app.*
 import kotlinx.android.synthetic.main.fragment_setup.*
 import kotlinx.android.synthetic.main.fragment_setup.buttonContinue
 import kotlinx.android.synthetic.main.fragment_setup.editTextName
@@ -32,6 +33,7 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
     var isFirstAppOpen = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
 
         if(!isFirstAppOpen) {
             val navOptions = NavOptions.Builder()

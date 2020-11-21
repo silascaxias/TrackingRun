@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.db.run.entities.Run
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
-import kotlinx.android.synthetic.main.item_run.view.*
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
+import kotlinx.android.synthetic.main.item_route.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RunAdapter: RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
+class RunAdapter(var runCellClickListener: RunCellClickListener): RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     inner class RunViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -32,7 +32,7 @@ class RunAdapter: RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
         return RunViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_run,
+                R.layout.item_route,
                 parent,
                 false
             )
@@ -60,10 +60,16 @@ class RunAdapter: RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
             val caloriesBurned = "${run.caloriesBurned}${resources.getString(R.string.zero_kcal_text)}"
             textViewCalories.text = caloriesBurned
+
+            setOnClickListener { runCellClickListener.onRunCellClickListener(run) }
         }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    interface RunCellClickListener {
+        fun onRunCellClickListener(currentRun: Run)
     }
 }

@@ -8,4 +8,5 @@
     <color name="orangeLightColor">#FF5722</color>
     <color name="colorAccent">#FFE600</color>
     <color name="errorColor">#D50000</color>
+    <color name="ic_launcher_background">#07446E</color>
 </resources>

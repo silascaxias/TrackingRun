@@ -33,7 +33,7 @@ import com.scaxias.enterprise.trackingrun.other.Constants.NOTIFICATION_CHANNEL_I
 import com.scaxias.enterprise.trackingrun.other.Constants.NOTIFICATION_CHANNEL_NAME
 import com.scaxias.enterprise.trackingrun.other.Constants.NOTIFICATION_ID
 import com.scaxias.enterprise.trackingrun.other.Constants.TIMER_UPDATE_INTERVAL
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
