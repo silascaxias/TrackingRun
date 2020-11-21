@@ -12,7 +12,7 @@ import com.scaxias.enterprise.trackingrun.extensions.visible
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_NAME
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_WEIGHT
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_app.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_settings.editTextName

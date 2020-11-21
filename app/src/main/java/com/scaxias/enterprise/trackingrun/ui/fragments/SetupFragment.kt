@@ -14,7 +14,7 @@ import com.scaxias.enterprise.trackingrun.other.Constants.KEY_FIRST_TIME_TOGGLE
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_NAME
 import com.scaxias.enterprise.trackingrun.other.Constants.KEY_WEIGHT
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_app.*
 import kotlinx.android.synthetic.main.fragment_setup.*
 import kotlinx.android.synthetic.main.fragment_setup.buttonContinue
 import kotlinx.android.synthetic.main.fragment_setup.editTextName

@@ -2,10 +2,9 @@ package com.scaxias.enterprise.trackingrun.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.scaxias.enterprise.trackingrun.R
@@ -13,14 +12,16 @@ import com.scaxias.enterprise.trackingrun.extensions.gone
 import com.scaxias.enterprise.trackingrun.extensions.visible
 import com.scaxias.enterprise.trackingrun.other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_app.*
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class AppActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        window.setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.blueColor))
+        setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
 
         navigationToTrackingFragmentIfNeeded(intent)
