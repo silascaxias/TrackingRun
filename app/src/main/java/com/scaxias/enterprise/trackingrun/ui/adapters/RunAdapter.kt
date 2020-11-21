@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.db.run.entities.Run
 import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
-import kotlinx.android.synthetic.main.item_run.view.*
+import kotlinx.android.synthetic.main.item_route.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,7 +32,7 @@ class RunAdapter(var runCellClickListener: RunCellClickListener): RecyclerView.A
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
         return RunViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_run,
+                R.layout.item_route,
                 parent,
                 false
             )

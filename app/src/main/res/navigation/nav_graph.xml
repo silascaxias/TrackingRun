@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/runFragment"
-        android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RunFragment"
+        android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RouteFragment"
         android:label="RunFragment" >
         <action
             android:id="@+id/action_runFragment_to_trackingFragment"
@@ -46,9 +46,9 @@
     </fragment>
     <dialog
         android:id="@+id/runDetailsFragment"
-        android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RunDetailsFragment"
+        android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RouteDetailsFragment"
         android:label="fragment_run_details_list_dialog"
-        tools:layout="@layout/fragment_run_details" >
+        tools:layout="@layout/fragment_route_details" >
         <action
             android:id="@+id/action_runDetailsFragment_to_runFragment"
             app:destination="@id/runFragment" />

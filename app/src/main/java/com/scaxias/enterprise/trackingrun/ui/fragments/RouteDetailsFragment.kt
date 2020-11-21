@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 import com.scaxias.enterprise.trackingrun.BuildConfig
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.other.Constants.TRACKING_SHARE_FILE_FOLDER
@@ -24,13 +23,7 @@ import com.scaxias.enterprise.trackingrun.other.utils.ConfirmDialogFragment
 import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_run_details.*
-import kotlinx.android.synthetic.main.item_run.imageViewRun
-import kotlinx.android.synthetic.main.item_run.textViewAvgSpeed
-import kotlinx.android.synthetic.main.item_run.textViewCalories
-import kotlinx.android.synthetic.main.item_run.textViewDate
-import kotlinx.android.synthetic.main.item_run.textViewDistance
-import kotlinx.android.synthetic.main.item_run.textViewTime
+import kotlinx.android.synthetic.main.fragment_route_details.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -38,15 +31,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class RunDetailsFragment : BottomSheetDialogFragment() {
+class RouteDetailsFragment : BottomSheetDialogFragment() {
 
-    private val args: RunDetailsFragmentArgs by navArgs()
+    private val args: RouteDetailsFragmentArgs by navArgs()
 
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_run_details, container, false)
+        inflater.inflate(R.layout.fragment_route_details, container, false)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog  = super.onCreateDialog(savedInstanceState).apply {
 

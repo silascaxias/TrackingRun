@@ -12,6 +12,8 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.other.CustomMarkerView
+import com.scaxias.enterprise.trackingrun.other.utils.ColorUtils.blackColor
+import com.scaxias.enterprise.trackingrun.other.utils.ColorUtils.getChartLabelColor
 import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.StatisticsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,28 +34,28 @@ class StatisticsFragment: Fragment(R.layout.fragment_statistics) {
     }
 
     private fun setupBarChart() {
-        val blueColor = ContextCompat.getColor(requireContext(), R.color.blueColor)
-        barChart.setNoDataText(getString(R.string.no_chart_data_text))
-        barChart.setNoDataTextColor(R.color.blueColor)
         barChart.xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
             setDrawLabels(false)
-            axisLineColor = blueColor
-            textColor = blueColor
+            axisLineColor = getChartLabelColor(requireContext())
+            textColor = getChartLabelColor(requireContext())
             setDrawGridLines(false)
         }
         barChart.axisLeft.apply {
-            axisLineColor = blueColor
-            textColor = blueColor
+            axisLineColor = getChartLabelColor(requireContext())
+            textColor = getChartLabelColor(requireContext())
             setDrawGridLines(false)
         }
         barChart.axisRight.apply {
-            axisLineColor = blueColor
-            textColor = blueColor
+            axisLineColor = getChartLabelColor(requireContext())
+            textColor = getChartLabelColor(requireContext())
             setDrawGridLines(false)
         }
         barChart.apply {
+            setNoDataText(getString(R.string.no_chart_data_text))
+            setNoDataTextColor(getChartLabelColor(requireContext()))
             description.text = getString(R.string.avg_speed_over_time_text)
+            description.textColor = blackColor(requireContext())
             legend.isEnabled = false
         }
     }
@@ -89,7 +91,7 @@ class StatisticsFragment: Fragment(R.layout.fragment_statistics) {
             it?.let {
                 val allAvgSpeeds = it.indices.map { i -> BarEntry(i.toFloat(), it[i].avgSpeedInKMH) }
                 val barDataSet = BarDataSet(allAvgSpeeds, getString(R.string.avg_speed_over_time_text)).apply {
-                    valueTextColor = ContextCompat.getColor(requireContext(), R.color.blueColor)
+                    valueTextColor = getChartLabelColor(requireContext())
                     color = ContextCompat.getColor(requireContext(), R.color.colorAccent)
                 }
                 barChart.data = BarData(barDataSet)

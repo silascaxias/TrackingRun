@@ -20,12 +20,12 @@ import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.ui.adapters.RunAdapter
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_run.*
+import kotlinx.android.synthetic.main.fragment_route.*
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
 @AndroidEntryPoint
-class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCallbacks, RunAdapter.RunCellClickListener {
+class RouteFragment: Fragment(R.layout.fragment_route), EasyPermissions.PermissionCallbacks, RunAdapter.RunCellClickListener {
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -59,7 +59,7 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
     }
 
     private fun setupRecyclerView() = recyclerViewRuns.apply {
-        runAdapter = RunAdapter(this@RunFragment)
+        runAdapter = RunAdapter(this@RouteFragment)
         adapter = runAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }
@@ -89,7 +89,7 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
     }
 
     override fun onRunCellClickListener(currentRun: Run) {
-        val action = RunFragmentDirections.actionRunFragmentToRunDetailsFragment(currentRun)
+        val action = RouteFragmentDirections.actionRunFragmentToRunDetailsFragment(currentRun)
         findNavController().navigate(action)
     }
 
