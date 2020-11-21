@@ -1,6 +1,7 @@
 package com.scaxias.enterprise.trackingrun.ui.fragments
 
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -32,6 +33,7 @@ class SetupFragment: Fragment(R.layout.fragment_setup) {
     var isFirstAppOpen = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
 
         if(!isFirstAppOpen) {
             val navOptions = NavOptions.Builder()

@@ -1,5 +1,6 @@
 package com.scaxias.enterprise.trackingrun.ui.fragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -11,7 +12,7 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.other.CustomMarkerView
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.StatisticsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_statistics.*
@@ -24,6 +25,7 @@ class StatisticsFragment: Fragment(R.layout.fragment_statistics) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
 
         setupObservers()
         setupBarChart()

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.db.run.entities.Run
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import kotlinx.android.synthetic.main.item_run.view.*
 import java.text.SimpleDateFormat
 import java.util.*

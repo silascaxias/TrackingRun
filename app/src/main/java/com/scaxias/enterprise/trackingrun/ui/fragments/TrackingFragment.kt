@@ -1,6 +1,7 @@
 package com.scaxias.enterprise.trackingrun.ui.fragments
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -22,12 +23,14 @@ import com.scaxias.enterprise.trackingrun.other.Constants.ACTION_STOP_SERVICE
 import com.scaxias.enterprise.trackingrun.other.Constants.MAP_ZOOM
 import com.scaxias.enterprise.trackingrun.other.Constants.POLYLINE_COLOR
 import com.scaxias.enterprise.trackingrun.other.Constants.POLYLINE_WIDTH
-import com.scaxias.enterprise.trackingrun.other.TrackingUtils
+import com.scaxias.enterprise.trackingrun.other.utils.ConfirmDialogFragment
+import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import com.scaxias.enterprise.trackingrun.services.Polyline
 import com.scaxias.enterprise.trackingrun.services.TrackingService
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_tracking.*
+import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.round
@@ -60,12 +63,13 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mapView.onCreate(savedInstanceState)
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
 
         lastLatLngVisible = null
 
         if(savedInstanceState != null) {
             val cancelTrackingDialog = parentFragmentManager.findFragmentByTag(
-                cancelTrackingDialogTag) as CancelTrackingDialogFragment?
+                cancelTrackingDialogTag) as ConfirmDialogFragment?
             cancelTrackingDialog?.setPositiveListener { stopRun() }
         }
         buttonRun.setOnClickListener { toggleRun() }
@@ -77,7 +81,6 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             map = it
             addAllRoutes()
         }
-
         subscribeToObservers()
     }
 
@@ -98,16 +101,16 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         if (isTracking) {
             menu?.getItem(0)?.isVisible = true
             sendCommandToService(ACTION_PAUSE_SERVICE)
-        } else {
-            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
-        }
+        } else sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
     }
 
-    private fun showCancelDialog() {
-        CancelTrackingDialogFragment().apply {
-            setPositiveListener { stopRun() }
-        }.show(parentFragmentManager, cancelTrackingDialogTag)
-    }
+    private fun showCancelDialog() = ConfirmDialogFragment(
+                getString(R.string.cancel_run_text),
+                getString(R.string.cancel_run_text_confirm),
+                getString(R.string.yes_text),
+                { stopRun() },
+                getString(R.string.no_text)
+    ) .show(parentFragmentManager, cancelTrackingDialogTag)
 
     private fun stopRun() {
         textViewTimer.text = getString(R.string.empty_time_milliseconds)
@@ -240,7 +243,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     override fun onStop() {
         super.onStop()
         mapView?.onStop()
-        lastLatLngVisible = pathPoints.last().last()
+        lastLatLngVisible = try {  pathPoints.last().last() } catch (_: Exception) { null }
     }
 
     override fun onPause() {

@@ -1,4 +1,4 @@
-package com.scaxias.enterprise.trackingrun.other
+package com.scaxias.enterprise.trackingrun.other.utils
 
 import android.content.Context
 import android.graphics.Bitmap

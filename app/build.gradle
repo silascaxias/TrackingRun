@@ -23,10 +23,12 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [mapApiKeyValue:"AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw"]
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [mapApiKeyValue:"AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw"]
         }
     }
     compileOptions {

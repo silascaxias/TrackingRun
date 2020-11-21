@@ -8,7 +8,7 @@
         <item>Velocidade média</item>
         <item>Calorias Queimadas</item>
     </string-array>
-    <string name="your_runs_title">Corridas</string>
+    <string name="your_runs_title">Trajetos</string>
     <string name="statistics_title">Estatísticas</string>
     <string name="settings_title">Configurações</string>
     <string name="welcome_text">Bem vindo! \nPor favor, insira seu nome e seu peso.</string>
@@ -16,7 +16,7 @@
     <string name="weight_placeholder">Peso (Kg)</string>
     <string name="continue_text">Continuar</string>
     <string name="sort_by_text">Ondernar por:</string>
-    <string name="new_run_fab_description">Ir para tela de nova corrida</string>
+    <string name="new_run_fab_description">Ir para tela de novo trajeto</string>
     <string name="apply_text">Aplicar</string>
     <string name="total_distance_text">Distância Total</string>
     <string name="zero_km_text">0km</string>
@@ -27,13 +27,13 @@
     <string name="average_speed_text">Velocidade Média</string>
     <string name="zero_km_h_text">0km/h</string>
     <string name="start_text">Começar</string>
-    <string name="finish_run_text">Finalizar Corrida</string>
-    <string name="cancel_run_text">Cancelar Corrida</string>
-    <string name="cancel_run_text_confirm">A corrida atual será cancelada. Você tem certeza?</string>
+    <string name="finish_run_text">Finalizar Trajeto</string>
+    <string name="cancel_run_text">Cancelar Trajeto</string>
+    <string name="cancel_run_text_confirm">O trajeto atual será cancelado. Você tem certeza?</string>
     <string name="yes_text">Sim</string>
     <string name="no_text">Não</string>
     <string name="stop_text">Parar</string>
-    <string name="run_success_save_text">Corrida salva com sucesso.</string>
+    <string name="run_success_save_text">Trajeto salvo com sucesso.</string>
     <string name="lets_go_text">"Vamos lá, %s!"</string>
     <string name="name_require_text">Informe um nome!</string>
     <string name="weight_require_text">Informe um peso!</string>
@@ -49,11 +49,15 @@
     <string name="empty_time_milliseconds">00:00:00:00</string>
     <string name="avg_speed_over_time_text">Velocidade média ao longo do tempo.</string>
     <string name="no_chart_data_text">Nenhum dado gráfico disponível.</string>
-    <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
     <string name="runs_empty_text">Seus trajetos aparecerão aqui!</string>
     <string name="accept_permissions_text">You need to accept location permissions to use this app.</string>
     <string name="map_route_description_text">Mapa da rota realizada.</string>
     <string name="share_button_description">Share button</string>
     <string name="share_text">Compartilhar</string>
-    <string name="share_run_text">Compartilhar corrida!</string>
+    <string name="share_run_text">Compartilhar trajeto!</string>
+    <string name="delete_text">Deletar</string>
+    <string name="delete_run_success_text">Trajeto deletado com sucesso!</string>
+    <string name="delete_run_title">Deletar Trajeto</string>
+    <string name="delete_run_text">Realmente deseja excluir o trajeto?</string>
+    <string name="ok_text">OK</string>
 </resources>

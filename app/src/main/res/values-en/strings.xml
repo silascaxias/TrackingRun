@@ -8,7 +8,7 @@
         <item>Average Speed</item>
         <item>Calories Burned</item>
     </string-array>
-    <string name="your_runs_title">Runs</string>
+    <string name="your_runs_title">Routes</string>
     <string name="statistics_title">Statistics</string>
     <string name="settings_title">Settings</string>
     <string name="welcome_text">Welcome! \ nPlease enter your name and weight.</string>
@@ -33,7 +33,7 @@
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
     <string name="stop_text">Stop</string>
-    <string name="run_success_save_text">Run saved successfully.</string>
+    <string name="run_success_save_text">Route saved successfully.</string>
     <string name="lets_go_text">"Let's go, %s!"</string>
     <string name="name_require_text">Enter a name!</string>
     <string name="weight_require_text">Enter a weight!</string>
@@ -49,5 +49,14 @@
     <string name="empty_time_milliseconds">00:00:00:00</string>
     <string name="avg_speed_over_time_text">Avg Speed Over Time</string>
     <string name="no_chart_data_text">No chart data available.</string>
-    <string name="google_maps_key">AIzaSyBMJvsIj8CeDvE8kp5O3b07CgvqOG-9oHw</string>
+    <string name="runs_empty_text">Your routes will appear here!</string>
+    <string name="accept_permissions_text">You need to accept location permissions to use this application. </string>
+    <string name="map_route_description_text">Map of the route taken.</string>
+    <string name="share_button_description">Share button</string>
+    <string name="share_text">Share</string>
+    <string name="share_run_text">Share the route!</string>
+    <string name="delete_text">Delete</string>
+    <string name="delete_run_success_text">Route deleted successfully!</string>
+    <string name="delete_run_title">Delete Route</string>
+    <string name="delete_run_text">Do you really want to delete the route?</string>
 </resources>
