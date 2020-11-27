@@ -41,7 +41,7 @@ class AppActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemReselectedListener { /* NO-OP */ }
         getNavController().addOnDestinationChangedListener{ _, destination, _ ->
             when(destination.id) {
-                R.id.settingsFragment, R.id.runFragment, R.id.statisticsFragment ->
+                R.id.settingsFragment, R.id.routeFragment, R.id.statisticsFragment ->
                     bottomNavigationView.visible()
                 else -> bottomNavigationView.gone()
             }
