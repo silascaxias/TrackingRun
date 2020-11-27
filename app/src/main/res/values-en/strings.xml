@@ -59,4 +59,9 @@
     <string name="delete_run_success_text">Route deleted successfully!</string>
     <string name="delete_run_title">Delete Route</string>
     <string name="delete_run_text">Do you really want to delete the route?</string>
+    <string name="ok_text">OK</string>
+    <string name="logo_description">Icon Tracking Run</string>
+    <string name = "delete_all_run_title">Delete Routes</string>
+    <string name = "delete_all_run_text">Do you really want to delete all routes?</string>
+    <string name="page_text">Page:</string>
 </resources>

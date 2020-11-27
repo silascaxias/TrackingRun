@@ -87,7 +87,7 @@ class StatisticsFragment: Fragment(R.layout.fragment_statistics) {
                 textViewTotalCalories.text = totalCalories
             }
         })
-        viewModel.runsByDate.observe(viewLifecycleOwner, {
+        viewModel.runs.observe(viewLifecycleOwner, {
             it?.let {
                 val allAvgSpeeds = it.indices.map { i -> BarEntry(i.toFloat(), it[i].avgSpeedInKMH) }
                 val barDataSet = BarDataSet(allAvgSpeeds, getString(R.string.avg_speed_over_time_text)).apply {

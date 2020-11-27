@@ -119,13 +119,15 @@ class TrackingService: LifecycleService() {
         timeControl.timeStarted = System.currentTimeMillis()
         timeControl.isTimerEnabled = true
         CoroutineScope(Dispatchers.Main).launch {
-            while (isTracking.value!!) {
+            while (isTracking.value == true) {
                 timeControl.lapTime = System.currentTimeMillis() - timeControl.timeStarted
                 timeRunInMillis.postValue(timeControl.timeRunInMillis())
                 delay(TIMER_UPDATE_INTERVAL)
-                if (timeRunInMillis.value!! >= timeControl.lastSecondTimestamp + 1000L) {
-                    timeRunInSeconds.value?.let { seconds -> timeRunInSeconds.postValue(seconds + 1) }
-                    timeControl.lastSecondTimestamp += 1000L
+                timeRunInMillis.value?.let {
+                    if (it >= timeControl.lastSecondTimestamp + 1000L) {
+                        timeRunInSeconds.value?.let { seconds -> timeRunInSeconds.postValue(seconds + 1) }
+                        timeControl.lastSecondTimestamp += 1000L
+                    }
                 }
             }
             timeControl.timeRun += timeControl.lapTime

@@ -61,4 +61,7 @@
     <string name="delete_run_text">Realmente deseja excluir o trajeto?</string>
     <string name="ok_text">OK</string>
     <string name="logo_description">Logo Tracking Run</string>
+    <string name="delete_all_run_title">Deletar Trajetos</string>
+    <string name="delete_all_run_text">Realmente deseja excluir os trajetos selecionados?</string>
+    <string name="page_text">Página:</string>
 </resources>

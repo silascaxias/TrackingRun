@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.scaxias.enterprise.trackingrun.repositories.MainRepository
 
 class StatisticsViewModel @ViewModelInject constructor(
-    private val mainRepository: MainRepository
+    mainRepository: MainRepository
 ): ViewModel() {
 
     val totalTimeRun = mainRepository.fetchTotalTimeInMillis()
@@ -13,5 +13,5 @@ class StatisticsViewModel @ViewModelInject constructor(
     val totalCaloriesBurned = mainRepository.fetchTotalCaloriesBurned()
     val totalAvgSpeed = mainRepository.fetchTotalAvgSpeed()
 
-    val runsByDate = mainRepository.fetchRunsByDate()
+    val runs = mainRepository.fetchRuns()
 }

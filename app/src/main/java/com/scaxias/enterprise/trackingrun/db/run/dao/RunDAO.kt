@@ -10,23 +10,11 @@ interface RunDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(run: Run)
 
-    @Delete
-    suspend fun delete(run: Run)
+    @Query("DELETE FROM run WHERE id IN (:ids)")
+    suspend fun deleteRunsByIds(ids: Array<Int>): Int
 
-    @Query("SELECT * FROM run ORDER BY timestamp DESC")
-    fun fetchByDate(): LiveData<List<Run>>
-
-    @Query("SELECT * FROM run ORDER BY timeInMillis DESC")
-    fun fetchByTimeInMillis(): LiveData<List<Run>>
-
-    @Query("SELECT * FROM run ORDER BY caloriesBurned DESC")
-    fun fetchByCaloriesBurned(): LiveData<List<Run>>
-
-    @Query("SELECT * FROM run ORDER BY avgSpeedInKMH DESC")
-    fun fetchByAvgSpeed(): LiveData<List<Run>>
-
-    @Query("SELECT * FROM run ORDER BY distanceInMeters DESC")
-    fun fetchByDistance(): LiveData<List<Run>>
+    @Query("SELECT * FROM run")
+    fun fetchAllRuns(): LiveData<List<Run>>
 
     @Query("SELECT SUM(timeInMillis) from run")
     fun fetchTotalTimeInMillis(): LiveData<Long>

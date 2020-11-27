@@ -3,12 +3,15 @@ package com.scaxias.enterprise.trackingrun.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.scaxias.enterprise.trackingrun.R
 import com.scaxias.enterprise.trackingrun.db.run.entities.Run
+import com.scaxias.enterprise.trackingrun.extensions.gone
+import com.scaxias.enterprise.trackingrun.extensions.visible
 import com.scaxias.enterprise.trackingrun.other.utils.TrackingUtils
 import kotlinx.android.synthetic.main.item_route.view.*
 import java.text.SimpleDateFormat
@@ -62,6 +65,10 @@ class RunAdapter(var runCellClickListener: RunCellClickListener): RecyclerView.A
             textViewCalories.text = caloriesBurned
 
             setOnClickListener { runCellClickListener.onRunCellClickListener(run) }
+            checkBoxRun.setOnCheckedChangeListener { _, isChecked ->
+                shadowView.apply { if(isChecked) visible() else gone() }
+                runCellClickListener.onCheckedListener(run.id ?: 0, isChecked)
+            }
         }
     }
 
@@ -71,5 +78,6 @@ class RunAdapter(var runCellClickListener: RunCellClickListener): RecyclerView.A
 
     interface RunCellClickListener {
         fun onRunCellClickListener(currentRun: Run)
+        fun onCheckedListener(id: Int, isChecked: Boolean)
     }
 }

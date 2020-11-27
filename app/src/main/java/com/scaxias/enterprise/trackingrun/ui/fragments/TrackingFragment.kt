@@ -30,6 +30,9 @@ import com.scaxias.enterprise.trackingrun.services.TrackingService
 import com.scaxias.enterprise.trackingrun.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_tracking.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
@@ -169,11 +172,13 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             val avgSpeed = round((distanceInMeters / 1000f) / (curTimeInMillis / 1000f / 60 / 60) * 10) / 10f
             val dateTimestamp = Calendar.getInstance().timeInMillis
             val caloriesBurned = ((distanceInMeters / 1000f) * weight).toInt()
+
             viewModel.insertRun(Run(bitmap, dateTimestamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned))
-            Snackbar.make(
-                requireActivity().findViewById(R.id.rootView),
-                getString(R.string.run_success_save_text),
-                Snackbar.LENGTH_LONG
+
+                        Snackbar.make(
+                    requireActivity().findViewById(R.id.rootView),
+                    getString(R.string.run_success_save_text),
+                    Snackbar.LENGTH_LONG
             ).show()
             stopRun()
         }

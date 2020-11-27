@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
@@ -8,7 +9,7 @@
     <Spinner
         android:id="@+id/spinnerFilter"
         style="@style/SpinnerItemStyle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:background="@color/blueColor"
@@ -19,11 +20,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Spinner
+        android:id="@+id/spinnerPage"
+        style="@style/SpinnerItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/blueColor"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewRuns"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFilterBy"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewPage"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textViewFilterBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/sort_by_text"
         android:textColor="@color/blueColor"
         android:textSize="16sp"
@@ -31,13 +49,26 @@
         app:layout_constraintEnd_toStartOf="@+id/spinnerFilter"
         app:layout_constraintTop_toTopOf="@+id/spinnerFilter" />
 
+    <TextView
+        android:id="@+id/textViewPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/page_text"
+        android:textColor="@color/blueColor"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinnerPage" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRuns"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerFilter" />
 
@@ -45,16 +76,33 @@
         android:id="@+id/newRunButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:contentDescription="@string/new_run_fab_description"
         android:src="@drawable/ic_add_black"
         app:backgroundTint="@color/colorAccent"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteRunButton"
+        app:layout_goneMarginRight="32dp"
         app:rippleColor="@android:color/white"
         app:tint="@color/blueColor" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteRunButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/new_run_fab_description"
+        android:src="@drawable/ic_delete"
+        android:visibility="gone"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@android:color/white"
+        app:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/textViewEmptyRuns"

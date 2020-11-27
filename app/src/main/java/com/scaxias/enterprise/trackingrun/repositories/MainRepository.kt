@@ -9,17 +9,9 @@ class MainRepository @Inject constructor(
 ) {
     suspend fun insertRun(run: Run) = runDAO.insert(run)
 
-    suspend fun deleteRun(run: Run) = runDAO.delete(run)
+    suspend fun deleteRunsByIds(ids: Array<Int>) = runDAO.deleteRunsByIds(ids)
 
-    fun fetchRunsByDate() = runDAO.fetchByDate()
-
-    fun fetchRunsByDistance() = runDAO.fetchByDistance()
-
-    fun fetchRunsByTimeInMillis() = runDAO.fetchByTimeInMillis()
-
-    fun fetchRunsByAvgSpeed() = runDAO.fetchByAvgSpeed()
-
-    fun fetchRunsByCaloriesBurned() = runDAO.fetchByCaloriesBurned()
+    fun fetchRuns() = runDAO.fetchAllRuns()
 
     fun fetchTotalAvgSpeed() = runDAO.fetchTotalAvgSpeed()
 

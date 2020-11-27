@@ -44,11 +44,11 @@ class RouteDetailsFragment : BottomSheetDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog  = super.onCreateDialog(savedInstanceState).apply {
 
         setOnShowListener {
-            window!!.setLayout(
+            window?.setLayout(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
             )
-            window!!.setBackgroundDrawableResource(android.R.color.transparent)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
     }
 
@@ -83,7 +83,7 @@ class RouteDetailsFragment : BottomSheetDialogFragment() {
                     getString(R.string.delete_run_title),
                     getString(R.string.delete_run_text),
                     getString(R.string.yes_text), {
-                        viewModel.deleteRun(run)
+                        run.id?.let { id -> viewModel.deleteRun(id) }
                         ConfirmDialogFragment(
                                 getString(R.string.delete_run_success_text),
                                 null,

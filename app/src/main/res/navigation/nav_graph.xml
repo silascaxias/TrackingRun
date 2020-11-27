@@ -10,7 +10,7 @@
         app:launchSingleTop="true" />
 
     <fragment
-        android:id="@+id/runFragment"
+        android:id="@+id/routeFragment"
         android:name="com.scaxias.enterprise.trackingrun.ui.fragments.RouteFragment"
         android:label="RunFragment" >
         <action
@@ -26,7 +26,7 @@
         android:label="SetupFragment" >
         <action
             android:id="@+id/action_setupFragment_to_runFragment"
-            app:destination="@id/runFragment" />
+            app:destination="@id/routeFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -42,7 +42,7 @@
         android:label="TrackingFragment" >
         <action
             android:id="@+id/action_trackingFragment_to_runFragment"
-            app:destination="@id/runFragment" />
+            app:destination="@id/routeFragment" />
     </fragment>
     <dialog
         android:id="@+id/runDetailsFragment"
@@ -51,7 +51,7 @@
         tools:layout="@layout/fragment_route_details" >
         <action
             android:id="@+id/action_runDetailsFragment_to_runFragment"
-            app:destination="@id/runFragment" />
+            app:destination="@id/routeFragment" />
         <argument
             android:name="currentRun"
             app:argType="com.scaxias.enterprise.trackingrun.db.run.entities.Run" />

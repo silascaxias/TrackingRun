@@ -6,8 +6,17 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:elevation="4dp"
+    android:maxWidth="0dp"
+    android:maxHeight="0dp"
+    android:minWidth="0dp"
+    android:minHeight="0dp"
     app:cardBackgroundColor="@android:color/white"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardMaxElevation="2dp"
+    app:layout_constraintHeight_max="wrap"
+    app:layout_constraintHeight_min="wrap"
+    app:layout_constraintWidth_max="wrap"
+    app:layout_constraintWidth_min="wrap">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,11 +28,11 @@
         <ImageView
             android:id="@+id/imageViewRun"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:contentDescription="@string/map_route_description_text"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -34,12 +43,12 @@
             android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:textColor="@color/blueColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewTime"
             app:layout_constraintEnd_toStartOf="@+id/textViewTime"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewTime"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="DATE" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -48,11 +57,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blueColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewDistance"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDate"
             app:layout_constraintEnd_toStartOf="@+id/textViewDistance"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewDate"
-            app:layout_constraintTop_toTopOf="@+id/textViewDistance"
+            app:layout_constraintTop_toTopOf="@+id/textViewDate"
             tools:text="TIME" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -61,11 +70,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blueColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAvgSpeed"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTime"
             app:layout_constraintEnd_toStartOf="@+id/textViewAvgSpeed"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewTime"
-            app:layout_constraintTop_toTopOf="@+id/textViewAvgSpeed"
+            app:layout_constraintTop_toTopOf="@+id/textViewTime"
             tools:text="DISTANCE" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -74,11 +83,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blueColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewCalories"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDistance"
             app:layout_constraintEnd_toStartOf="@+id/textViewCalories"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewDistance"
-            app:layout_constraintTop_toTopOf="@+id/textViewCalories"
+            app:layout_constraintTop_toTopOf="@+id/textViewDistance"
             tools:text="AVGSPEED" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -87,11 +96,46 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blueColor"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAvgSpeed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewAvgSpeed"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewAvgSpeed"
             tools:text="CALORIES" />
+
+        <View
+            android:id="@+id/shadowView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#A8000000"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageViewRun"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkBoxRun"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:checked="false"
+            android:gravity="center"
+            android:maxWidth="0dp"
+            android:maxHeight="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:textAlignment="gravity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewRun"
+            app:layout_constraintHeight_max="wrap"
+            app:layout_constraintHeight_min="wrap"
+            app:layout_constraintTop_toTopOf="@+id/imageViewRun"
+            app:layout_constraintWidth_max="wrap"
+            app:layout_constraintWidth_min="wrap"
+            app:useMaterialThemeColors="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
